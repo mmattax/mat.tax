@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello, world!</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="" />
+    <link rel="icon" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,100&display=swap"
+        rel="stylesheet">
+
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+        }
+      }
+    </script>
+
+    <style>
+        body {
+            padding-top: 5rem;
+        }
+
+        h1,
+        h3 {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .row.hero img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        a {
+            color: initial;
+            text-decoration: none;
+            border-bottom: 1px dotted;
+        }
+
+        .socials a {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container" v-cloak>
+        <div class="row hero">
+            <div class="col-sm-3 text-center mb-3">
+                <img class="img-thumbnail rounded-circle" src="./images/headshot.jpg" />
+            </div>
+            <div class="col-sm-9">
+                <div class="vstack gap-3">
+                    <h1>Hi, I'm Michael</h1>
+                    <p class="lead">
+                        I have 16 years experience as a Software Engineer, mostly in early or founding positions at
+                        startups. I'm currently a co-founder & engineer at <a href="https://shaker.io">Shaker</a>.
+                    </p>
+                    <h3>My Work</h3>
+                    <div class="vstack gap-3 mb-2">
+                        <div v-for="work in myWork" class="row">
+                            <div class="col-3 d-none d-sm-block">
+                                {{ work.timeFrame }}
+                            </div>
+                            <div class="col">
+                                <strong>
+                                    <a v-if="work.company.url" :href="work.company.url">{{ work.company.name }}</a>
+                                    <span v-if="!work.company.url">{{ work.company.name }}</span>
+                                </strong> | {{ work.title }}
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Hobby Projects</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="https://gmail-archiver.com">Gmail Archiver</a> - Achieve
+                            inbox zero by automating the archiving of emails in your inbox</li>
+                    </ul>
+
+                    <h3>Find Me</h3>
+                    <div class="hstack gap-3 fs-3 socials">
+                        <a href="https://www.linkedin.com/in/michaelmattax/">
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                        </a>
+                        <a href="https://twitter.com/mmattax">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="https://github.com/mmattax">
+                            <ion-icon name="logo-github"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="module">
+    import { createApp } from 'vue'
+
+    createApp({
+        data() {
+            return {
+                myWork: [
+                    {
+                        timeFrame: "Jan 2020 - Present",
+                        title: "Co-Founder, Software Engineer",
+                        company: {
+                            name: "Shaker",
+                            url: "https://shaker.io"
+                        }
+                    }, {
+                        timeFrame: "Nov 2019 - Jan 2020",
+                        title: "Lead Software Engineer",
+                        company: {
+                            name: "Zylo",
+                            url: "https://zylo.com"
+                        },
+                    }, {
+                        timeFrame: "Mar 2018 - Jan 2020",
+                        title: "Founding Software Engineer",
+                        company: {
+                            name: "Jell",
+                            url: "https://jell.com"
+                        },
+                    }, {
+                        timeFrame: "Jul 2009 - Mar 2018",
+                        title: "Senior Software Engineer",
+                        company: {
+                            name: "Formstack",
+                            url: "https://formstack.com"
+                        }
+                    }, {
+                        timeFrame: "Sep 2007 - Jul 2009",
+                        title: "Software Engineer",
+                        company: {
+                            name: "Aptera Software",
+                        }
+                    }
+                ]
+            }
+        }
+    }).mount('#app')
+</script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</html>
